@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Links</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .icon {
+            width: 50px;
+            height: 50px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>Map Links</h1>
+<p id="location-info"></p>
+<div id="map-links">
+    <a id="google-maps-link" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Google_Maps_logo_%282020%29.svg/1200px-Google_Maps_logo_%282020%29.svg.png" alt="Google Maps" class="icon"></a>
+    <a id="apple-maps-link" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Apple_Maps_logo.svg/2048px-Apple_Maps_logo.svg.png" alt="Apple Maps" class="icon"></a>
+    <a id="waze-link" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/0b/Waze_Logo.svg/1200px-Waze_Logo.svg.png" alt="Waze" class="icon"></a>
+    <a id="bing-maps-link" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Microsoft_Bing_logo_%282020%29.svg/1280px-Microsoft_Bing_logo_%282020%29.svg.png" alt="Bing Maps" class="icon"></a>
+</div>
+
+<script>
+    function getQueryParams() {
+        const params = new URLSearchParams(window.location.search);
+        return {
+            lat: params.get('lat'),
+            lon: params.get('lon')
+        };
+    }
+
+    function updateLinks(lat, lon) {
+        document.getElementById('location-info').innerText = `Latitude: ${lat}, Longitude: ${lon}`;
+
+        const googleMapsLink = `https://www.google.com/maps/search/?api=1&query=${lat},${lon}`;
+        const appleMapsLink = `https://maps.apple.com/?q=${lat},${lon}`;
+        const wazeLink = `https://www.waze.com/ul?ll=${lat},${lon}&navigate=yes`;
+        const bingMapsLink = `https://www.bing.com/maps?q=${lat},${lon}`;
+
+        document.getElementById('google-maps-link').href = googleMapsLink;
+        document.getElementById('apple-maps-link').href = appleMapsLink;
+        document.getElementById('waze-link').href = wazeLink;
+        document.getElementById('bing-maps-link').href = bingMapsLink;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const params = getQueryParams();
+        if (params.lat && params.lon) {
+            updateLinks(params.lat, params.lon);
+        } else {
+            document.getElementById('location-info').innerText = 'No coordinates provided.';
+        }
+    });
+</script>
+</body>
+</html>
