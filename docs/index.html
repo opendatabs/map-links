@@ -55,6 +55,14 @@
         <img src="icons/Bing_Fluent_Logo_Text.svg" alt="Bing Maps">
         Bing Maps
     </a>
+    <a id="osm-link" class="button" target="_blank">
+        <img src="icons/Openstreetmap_logo.svg" alt="OpenStreetMap">
+        OpenStreetMap
+    </a>
+    <a id="geo-uri-link" class="button">
+        <img src="icons/smartphone-icon-png-6.png" alt="Geo URI">
+        Geo URI
+    </a>
 </div>
 
 <script>
@@ -73,11 +81,15 @@
         const appleMapsLink = `https://maps.apple.com/?daddr=${lat},${lon}`;
         const wazeLink = `https://www.waze.com/ul?ll=${lat},${lon}&navigate=yes`;
         const bingMapsLink = `https://www.bing.com/maps?q=${lat},${lon}`;
+        const osmLink = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=18/${lat}/${lon}`;
+        const geoUriLink = `geo:${lat},${lon}`;
 
         document.getElementById('google-maps-link').href = googleMapsLink;
         document.getElementById('apple-maps-link').href = appleMapsLink;
         document.getElementById('waze-link').href = wazeLink;
         document.getElementById('bing-maps-link').href = bingMapsLink;
+        document.getElementById('osm-link').href = osmLink;
+        document.getElementById('geo-uri-link').href = geoUriLink;
     }
 
     document.addEventListener('DOMContentLoaded', () => {
