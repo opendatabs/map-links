@@ -8,11 +8,30 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
+            background-color: #f4f4f4;
         }
-        .icon {
-            width: 50px;
-            height: 50px;
-            margin: 10px;
+        .button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 200px;
+            padding: 10px;
+            margin: 10px auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            text-decoration: none;
+            color: #000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #e9e9e9;
+        }
+        .button img {
+            max-height: 30px;
+            margin-right: 10px;
+            vertical-align: middle;
         }
     </style>
 </head>
@@ -20,10 +39,22 @@
 <h1>Map Links</h1>
 <p id="location-info"></p>
 <div id="map-links">
-    <a id="google-maps-link" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Google_Maps_logo_%282020%29.svg/1200px-Google_Maps_logo_%282020%29.svg.png" alt="Google Maps" class="icon"></a>
-    <a id="apple-maps-link" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Apple_Maps_logo.svg/2048px-Apple_Maps_logo.svg.png" alt="Apple Maps" class="icon"></a>
-    <a id="waze-link" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/0b/Waze_Logo.svg/1200px-Waze_Logo.svg.png" alt="Waze" class="icon"></a>
-    <a id="bing-maps-link" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Microsoft_Bing_logo_%282020%29.svg/1280px-Microsoft_Bing_logo_%282020%29.svg.png" alt="Bing Maps" class="icon"></a>
+    <a id="google-maps-link" class="button" target="_blank">
+        <img src="icons/Google_Maps_Logo.svg" alt="Google Maps">
+        Google Maps
+    </a>
+    <a id="apple-maps-link" class="button" target="_blank">
+        <img src="icons/Apple_Maps_logo.svg" alt="Apple Maps">
+        Apple Maps
+    </a>
+    <a id="waze-link" class="button" target="_blank">
+        <img src="icons/Waze_logo_2022.png" alt="Waze">
+        Waze
+    </a>
+    <a id="bing-maps-link" class="button" target="_blank">
+        <img src="icons/Bing_Fluent_Logo_Text.svg" alt="Bing Maps">
+        Bing Maps
+    </a>
 </div>
 
 <script>
@@ -38,8 +69,8 @@
     function updateLinks(lat, lon) {
         document.getElementById('location-info').innerText = `Latitude: ${lat}, Longitude: ${lon}`;
 
-        const googleMapsLink = `https://www.google.com/maps/search/?api=1&query=${lat},${lon}`;
-        const appleMapsLink = `https://maps.apple.com/?q=${lat},${lon}`;
+        const googleMapsLink = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}`;
+        const appleMapsLink = `https://maps.apple.com/?daddr=${lat},${lon}`;
         const wazeLink = `https://www.waze.com/ul?ll=${lat},${lon}&navigate=yes`;
         const bingMapsLink = `https://www.bing.com/maps?q=${lat},${lon}`;
 
