@@ -4,41 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Map Links</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f4f4f4;
-        }
-        .button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 200px;
-            padding: 10px;
-            margin: 10px auto;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #fff;
-            text-decoration: none;
-            color: #000;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s;
-        }
-        .button:hover {
-            background-color: #e9e9e9;
-        }
-        .button img {
-            max-height: 30px;
-            margin-right: 10px;
-            vertical-align: middle;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>Map Links</h1>
+<div class="logo">
+    <img src="icons/ODBS_Logo_rund_gruen.png" alt="Open Data Basel-Stadt">
+    <h1>Map Links</h1>
+</div>
+<p>This tool provides links to various map services based on the provided coordinates.</p>
 <p id="location-info"></p>
 <div id="map-links">
+    <a id="mapbs-link" class="button" target="_blank">
+        <img src="icons/logo.33f5ff.png" alt="MapBS">
+        MapBS
+    </a>
     <a id="google-maps-link" class="button" target="_blank">
         <img src="icons/Google_Maps_Logo.svg" alt="Google Maps">
         Google Maps
@@ -65,41 +44,7 @@
     </a>
 </div>
 
-<script>
-    function getQueryParams() {
-        const params = new URLSearchParams(window.location.search);
-        return {
-            lat: params.get('lat'),
-            lon: params.get('lon')
-        };
-    }
-
-    function updateLinks(lat, lon) {
-        document.getElementById('location-info').innerText = `Latitude: ${lat}, Longitude: ${lon}`;
-
-        const googleMapsLink = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}`;
-        const appleMapsLink = `https://maps.apple.com/?daddr=${lat},${lon}`;
-        const wazeLink = `https://www.waze.com/ul?ll=${lat},${lon}&navigate=yes`;
-        const bingMapsLink = `https://www.bing.com/maps?q=${lat},${lon}`;
-        const osmLink = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=18/${lat}/${lon}`;
-        const geoUriLink = `geo:${lat},${lon}`;
-
-        document.getElementById('google-maps-link').href = googleMapsLink;
-        document.getElementById('apple-maps-link').href = appleMapsLink;
-        document.getElementById('waze-link').href = wazeLink;
-        document.getElementById('bing-maps-link').href = bingMapsLink;
-        document.getElementById('osm-link').href = osmLink;
-        document.getElementById('geo-uri-link').href = geoUriLink;
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-        const params = getQueryParams();
-        if (params.lat && params.lon) {
-            updateLinks(params.lat, params.lon);
-        } else {
-            document.getElementById('location-info').innerText = 'No coordinates provided.';
-        }
-    });
-</script>
+<script src="wgs84_ch1903.js"></script>
+<script src="index.js"></script>
 </body>
 </html>
