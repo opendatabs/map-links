@@ -10,9 +10,9 @@ This GitHub Pages site provides a user-friendly interface to generate quick acce
 
 ## Example Usage
 To view the map links for a specific location, append the latitude and longitude as URL parameters. For instance, to see map links for the Marktplatz in Basel:
-'''
+```
 https://opendatabs.github.io/map-links/?lat=47.5582203&lon=7.5876745
-'''
+```
 
 ## Data Integration Example
 An example of the datasets that benefit from this tool is the dataset containing locations of Velopumpen in Basel-Stadt, which can be explored here: [Velopumpen in Basel-Stadt](https://data.bs.ch/explore/dataset/100213/)
