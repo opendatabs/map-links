@@ -16,8 +16,8 @@ function updateLinks(lat, lon) {
     const osmLink = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=18/${lat}/${lon}`;
     const geoUriLink = `geo:${lat},${lon}`;
 
-    const coordsCH = Swisstopo.WGStoCH(lat, lon);
-    const mapBSLink = `https://map.geo.bs.ch/?lang=de&baselayer_ref=Grundkarte%20farbig&map_x=${coordsCH[0]}&map_y=${coordsCH[1]}&map_zoom=9`;
+    // TODO: FIX THIS const coordsCH = Swisstopo.WGStoCH(lat, lon);
+    const mapBSLink = `https://map.geo.bs.ch/?lang=de&baselayer_ref=Grundkarte%20farbig&map_x=${lat}&map_y=${lon}&map_zoom=12`;
 
     document.getElementById('google-maps-link').href = googleMapsLink;
     document.getElementById('apple-maps-link').href = appleMapsLink;
