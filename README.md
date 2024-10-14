@@ -1,4 +1,4 @@
-# Map Links Tool for Fachstelle OGD Basel-Stadt
+# Map Links Tool for Fachstelle OGD Basel-Stadt test
 
 ## Overview
 This GitHub Pages site provides a user-friendly interface to generate quick access links to various map services using geographical coordinates. It is primarily used by Fachstelle OGD Basel-Stadt to create columns for datasets with geopoints and shapes that are published on our open data portal.
