@@ -8,7 +8,7 @@ function getQueryParams() {
     };
 }
 
-function updateLinks(lat, lon, tree_groups, tree_groups_layers_) {
+function updateLinks(lat, lon, tree_groups, tree_group_layers_) {
     document.getElementById('location-info').innerText = `Latitude: ${lat}, Longitude: ${lon}`;
 
     const googleMapsLink = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}`;
