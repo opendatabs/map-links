@@ -2,7 +2,9 @@ function getQueryParams() {
     const params = new URLSearchParams(window.location.search);
     return {
         lat: params.get('lat'),
-        lon: params.get('lon')
+        lon: params.get('lon'),
+        tree_groups: params.get('p1'),
+        tree_groups_layers_: params.get('p2')
     };
 }
 
@@ -16,8 +18,7 @@ function updateLinks(lat, lon) {
     const osmLink = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=18/${lat}/${lon}`;
     const geoUriLink = `geo:${lat},${lon}`;
 
-    // TODO: FIX THIS const coordsCH = Swisstopo.WGStoCH(lat, lon);
-    const mapBSLink = `https://map.geo.bs.ch/?lang=de&baselayer_ref=Grundkarte%20grau&map_x=${lat}&map_y=${lon}&map_zoom=12&map_crosshair=true`;
+    const mapBSLink = `https://map.geo.bs.ch/?lang=de&baselayer_ref=Grundkarte%20grau&tree_groups=${tree_groupe}&tree_group_layers_${tree_group_layers_}&map_x=${lat}&map_y=${lon}&map_zoom=12&map_crosshair=true`;
 
     document.getElementById('google-maps-link').href = googleMapsLink;
     document.getElementById('apple-maps-link').href = appleMapsLink;
