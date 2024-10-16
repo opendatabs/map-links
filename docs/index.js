@@ -4,7 +4,7 @@ function getQueryParams() {
         lat: params.get('lat'),
         lon: params.get('lon'),
         tree_groups: params.get('p1'),
-        tree_groups_layers_: params.get('p2')
+        tree_group_layers_: params.get('p2')
     };
 }
 
