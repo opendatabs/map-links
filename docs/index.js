@@ -38,7 +38,6 @@ function updateLinks(lat, lon, tree_groups, tree_group_layers_key, tree_group_la
     const bingMapsLink = `https://www.bing.com/maps?q=${lat},${lon}`;
     const osmLink = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=18/${lat}/${lon}`;
     const geoUriLink = `geo:${lat},${lon}`;
-    let mapBSLink = '';  // mapBSLink hier initialisieren
     if (lat && lon && tree_groups && tree_group_layers_key && tree_group_layers_value) {
         const mapBSLink = `https://map.geo.bs.ch/?lang=de&baselayer_ref=Grundkarte%20grau&tree_groups=${tree_groups}&tree_group_layers_${tree_group_layers_key}=${tree_group_layers_value}&map_x=${lat}&map_y=${lon}&map_zoom=12&map_crosshair=true`;
         console.log(mapBSLink);
