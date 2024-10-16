@@ -5,9 +5,14 @@ function getQueryParams() {
     let tree_group_layers_key = '';
     let tree_group_layers_value = '';
 
+    console.log("p2 ist: " + p2);
     // Nur aufteilen, wenn p2 tatsächlich einen '=' enthält
     if (p2.includes('=')) {
         [tree_group_layers_key, tree_group_layers_value] = p2.split('=');
+        console.log("Rstam 1");
+    }
+    else {
+        consolt.log("Rstam 2");
     }
 
     return {
