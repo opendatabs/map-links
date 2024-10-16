@@ -14,6 +14,8 @@ function getQueryParams() {
     else {
         consolt.log("1 Nicht Ok");
     }
+    console.log("2 tree_group_layers_key: " + tree_group_layers_key);
+    console.log("2 tree_group_layers_value: " + tree_group_layers_value);
 
     return {
         lat: params.get('lat'),
