@@ -58,7 +58,7 @@ function updateLinks(lat, lon, tree_groups, tree_group_layers_key, tree_group_la
 document.addEventListener('DOMContentLoaded', () => {
     const params = getQueryParams();
     if (params.lat && params.lon) {
-        updateLinks(params.lat, params.lon);
+        updateLinks(params.lat, params.lon, params.tree_groups, params.tree_group_layers_key, params.tree_group_layers_value);
     } else {
         document.getElementById('location-info').innerText = 'No coordinates provided.';
     }
