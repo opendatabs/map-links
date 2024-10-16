@@ -4,11 +4,12 @@ function getQueryParams() {
         lat: params.get('lat'),
         lon: params.get('lon'),
         tree_groups: params.get('p1'),
-        tree_group_layers_: params.get('p2')
+        tree_group_layers_key: params.get('p2').split('=')[0],
+        tree_group_layers_value: params.get('p2').split('=')[1]
     };
 }
 
-function updateLinks(lat, lon, tree_groups, tree_group_layers_) {
+function updateLinks(lat, lon, tree_groups, tree_group_layers_key, tree_group_layers_value) {
     document.getElementById('location-info').innerText = `Latitude: ${lat}, Longitude: ${lon}`;
 
     const googleMapsLink = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}`;
@@ -18,7 +19,7 @@ function updateLinks(lat, lon, tree_groups, tree_group_layers_) {
     const osmLink = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=18/${lat}/${lon}`;
     const geoUriLink = `geo:${lat},${lon}`;
     
-    const mapBSLink = `https://map.geo.bs.ch/?lang=de&baselayer_ref=Grundkarte%20grau&tree_groups=${tree_groups}&tree_group_layers_${tree_group_layers_}&map_x=${lat}&map_y=${lon}&map_zoom=12&map_crosshair=true`;
+    const mapBSLink = `https://map.geo.bs.ch/?lang=de&baselayer_ref=Grundkarte%20grau&tree_groups=${tree_groups}&tree_group_layers_${tree_group_layers_key}=${tree_group_layers_value}&map_x=${lat}&map_y=${lon}&map_zoom=12&map_crosshair=true`;
 
 
     document.getElementById('google-maps-link').href = googleMapsLink;
