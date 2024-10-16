@@ -1,11 +1,21 @@
 function getQueryParams() {
     const params = new URLSearchParams(window.location.search);
+    
+    let p2 = params.get('p2') || ''; // Stelle sicher, dass p2 nicht null ist
+    let tree_group_layers_key = '';
+    let tree_group_layers_value = '';
+
+    // Nur aufteilen, wenn p2 tatsächlich einen '=' enthält
+    if (p2.includes('=')) {
+        [tree_group_layers_key, tree_group_layers_value] = p2.split('=');
+    }
+
     return {
         lat: params.get('lat'),
         lon: params.get('lon'),
         tree_groups: params.get('p1'),
-        tree_group_layers_key: params.get('p2').split('=')[0],
-        tree_group_layers_value: params.get('p2').split('=')[1]
+        tree_group_layers_key: tree_group_layers_key,
+        tree_group_layers_value: tree_group_layers_value
     };
 }
 
@@ -19,8 +29,12 @@ function updateLinks(lat, lon, tree_groups, tree_group_layers_key, tree_group_la
     const osmLink = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=18/${lat}/${lon}`;
     const geoUriLink = `geo:${lat},${lon}`;
     
-    const mapBSLink = `https://map.geo.bs.ch/?lang=de&baselayer_ref=Grundkarte%20grau&tree_groups=${tree_groups}&tree_group_layers_${tree_group_layers_key}=${tree_group_layers_value}&map_x=${lat}&map_y=${lon}&map_zoom=12&map_crosshair=true`;
-
+    if (lat && lon && tree_groups && tree_group_layers_key && tree_group_layers_value) {
+        const mapBSLink = `https://map.geo.bs.ch/?lang=de&baselayer_ref=Grundkarte%20grau&tree_groups=${tree_groups}&tree_group_layers_${tree_group_layers_key}=${tree_group_layers_value}&map_x=${lat}&map_y=${lon}&map_zoom=12&map_crosshair=true`;
+        console.log(mapBSLink);
+    } else {
+        console.log('Fehlende Parameter für den mapBS-Link.');
+    }
 
     document.getElementById('google-maps-link').href = googleMapsLink;
     document.getElementById('apple-maps-link').href = appleMapsLink;
