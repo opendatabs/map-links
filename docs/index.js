@@ -18,7 +18,7 @@ function updateLinks(lat, lon) {
     const osmLink = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=18/${lat}/${lon}`;
     const geoUriLink = `geo:${lat},${lon}`;
 
-    const mapBSLink = `https://map.geo.bs.ch/`;
+    const mapBSLink = `https://map.geo.bs.ch/?lang=de&baselayer_ref=Grundkarte%20grau`;
 
     document.getElementById('google-maps-link').href = googleMapsLink;
     document.getElementById('apple-maps-link').href = appleMapsLink;
