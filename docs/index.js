@@ -9,10 +9,10 @@ function getQueryParams() {
     // Nur aufteilen, wenn p2 tatsächlich einen '=' enthält
     if (p2.includes('=')) {
         [tree_group_layers_key, tree_group_layers_value] = p2.split('=');
-        console.log("Rstam 1");
+        console.log("1 Ok");
     }
     else {
-        consolt.log("Rstam 2");
+        consolt.log("1 Nicht Ok");
     }
 
     return {
@@ -25,6 +25,9 @@ function getQueryParams() {
 }
 
 function updateLinks(lat, lon, tree_groups, tree_group_layers_key, tree_group_layers_value) {
+    console.log("tree_groups: " + tree_groups);
+    console.log("tree_group_layers_key: " + tree_group_layers_key);
+    console.log("tree_group_layers_value: " + tree_group_layers_value);
     document.getElementById('location-info').innerText = `Latitude: ${lat}, Longitude: ${lon}`;
 
     const googleMapsLink = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}`;
