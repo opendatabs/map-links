@@ -8,7 +8,7 @@ function getQueryParams() {
     };
 }
 
-function updateLinks(lat, lon) {
+function updateLinks(lat, lon, tree_groups, tree_groups_layers_) {
     document.getElementById('location-info').innerText = `Latitude: ${lat}, Longitude: ${lon}`;
 
     const googleMapsLink = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}`;
@@ -17,8 +17,9 @@ function updateLinks(lat, lon) {
     const bingMapsLink = `https://www.bing.com/maps?q=${lat},${lon}`;
     const osmLink = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=18/${lat}/${lon}`;
     const geoUriLink = `geo:${lat},${lon}`;
+    
+    const mapBSLink = `https://map.geo.bs.ch/?lang=de&baselayer_ref=Grundkarte%20grau&tree_groups=${tree_groups}&tree_group_layers_${tree_group_layers_}&map_x=${lat}&map_y=${lon}&map_zoom=12&map_crosshair=true`;
 
-    const mapBSLink = `https://map.geo.bs.ch/?lang=de&baselayer_ref=Grundkarte%20grau&map_x=${lat}&map_y=${lon}&map_zoom=12&map_crosshair=true&tree_group_layers_${tree_group_layers_}`;
 
     document.getElementById('google-maps-link').href = googleMapsLink;
     document.getElementById('apple-maps-link').href = appleMapsLink;
