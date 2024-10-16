@@ -1,22 +1,14 @@
 function getQueryParams() {
     const params = new URLSearchParams(window.location.search);
     
-    let p2 = params.get('p2') || ''; // Stelle sicher, dass p2 nicht null ist
+    let p2 = params.get('p2') || '';
     let tree_group_layers_key = '';
     let tree_group_layers_value = '';
 
-    console.log("p2 ist: " + p2);
-    // Nur aufteilen, wenn p2 tatsächlich einen '=' enthält
-    if (p2.includes('=')) {
-        [tree_group_layers_key, tree_group_layers_value] = p2.split('=');
-        console.log("1 Ok");
-    }
-    else {
-        consolt.log("1 Nicht Ok");
-    }
+  
+    [tree_group_layers_key, tree_group_layers_value] = p2.split('=');
     console.log("2 tree_group_layers_key: " + tree_group_layers_key);
     console.log("2 tree_group_layers_value: " + tree_group_layers_value);
-
     return {
         lat: params.get('lat'),
         lon: params.get('lon'),
@@ -28,8 +20,6 @@ function getQueryParams() {
 
 function updateLinks(lat, lon, tree_groups, tree_group_layers_key, tree_group_layers_value) {
     console.log("tree_groups: " + tree_groups);
-    console.log("tree_group_layers_key: " + tree_group_layers_key);
-    console.log("tree_group_layers_value: " + tree_group_layers_value);
     document.getElementById('location-info').innerText = `Latitude: ${lat}, Longitude: ${lon}`;
 
     const googleMapsLink = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}`;
@@ -51,7 +41,7 @@ function updateLinks(lat, lon, tree_groups, tree_group_layers_key, tree_group_la
     document.getElementById('bing-maps-link').href = bingMapsLink;
     document.getElementById('osm-link').href = osmLink;
     document.getElementById('geo-uri-link').href = geoUriLink;
-    document.getElementById('mapbs-link').href = mapBSLink; // Fallback, falls mapBSLink leer ist
+    document.getElementById('mapbs-link').href = mapBSLink; 
 }
 
 document.addEventListener('DOMContentLoaded', () => {
